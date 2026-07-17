@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Protected page">
+  <div class="utility_component">
+    <div class="utility_form-block w-password-page w-form">
+      <form id="email-form" name="email-form" class="utility_form w-password-page" data-protected-form>
+        <img width="106" src="https://d3e54v103j8qbb.cloudfront.net/static/utility-lock.ae54711958.svg" alt="" class="utility_image" />
+        <h3>Protected Page</h3>
+        <div class="padding-xxsmall"></div>
+        <input class="form_input w-password-page w-input" autofocus maxlength="256" name="pass" placeholder="Enter your password" type="password" id="pass" />
+        <div class="padding-xxsmall"></div>
+        <input type="submit" class="button w-password-page w-button" value="Submit" />
+        <div class="form_message-error-wrapper w-password-page w-form-fail" data-protected-error hidden>
+          <div class="form_message-error">
+            <div>Incorrect password. Please try again.</div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-protected-form]');
+  const errorWrapper = document.querySelector<HTMLElement>('[data-protected-error]');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (errorWrapper) errorWrapper.hidden = false;
+  });
+</script>

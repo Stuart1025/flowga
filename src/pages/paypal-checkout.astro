@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Yoga Studio">
+  <div class="w-commerce-commercepaypalcheckoutformcontainer">
+    <div class="w-commerce-commercelayoutcontainer w-container">
+      <div class="w-commerce-commercelayoutmain">
+        <div class="w-commerce-commercecheckoutcustomerinfosummarywrapper">
+          <div class="w-commerce-commercecheckoutsummaryblockheader">
+            <h2>Customer Information</h2>
+          </div>
+          <fieldset class="w-commerce-commercecheckoutblockcontent">
+            <div class="w-commerce-commercecheckoutrow">
+              <div class="w-commerce-commercecheckoutcolumn">
+                <div class="w-commerce-commercecheckoutsummaryitem">
+                  <label class="w-commerce-commercecheckoutsummarylabel">Email</label>
+                  <div>customer@example.com</div>
+                </div>
+              </div>
+              <div class="w-commerce-commercecheckoutcolumn">
+                <div class="w-commerce-commercecheckoutsummaryitem">
+                  <label class="w-commerce-commercecheckoutsummarylabel">Shipping Address</label>
+                  <div>Jane Doe</div>
+                  <div>123 Sample St</div>
+                  <div class="w-commerce-commercecheckoutsummaryflexboxdiv">
+                    <div class="w-commerce-commercecheckoutsummarytextspacingondiv">Sydney</div>
+                    <div class="w-commerce-commercecheckoutsummarytextspacingondiv">NSW</div>
+                    <div class="w-commerce-commercecheckoutsummarytextspacingondiv">2000</div>
+                  </div>
+                  <div>Australia</div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="w-commerce-commercecheckoutpaymentsummarywrapper">
+          <div class="w-commerce-commercecheckoutsummaryblockheader">
+            <h2>Payment Info</h2>
+          </div>
+          <fieldset class="w-commerce-commercecheckoutblockcontent">
+            <div class="w-commerce-commercecheckoutrow">
+              <div class="w-commerce-commercecheckoutcolumn">
+                <div class="w-commerce-commercecheckoutsummaryitem">
+                  <label class="w-commerce-commercecheckoutsummarylabel">Payment Info</label>
+                  <div class="w-commerce-commercecheckoutsummaryflexboxdiv">
+                    <div class="w-commerce-commercecheckoutsummarytextspacingondiv">PayPal</div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-commerce-commercecheckoutcolumn">
+                <div class="w-commerce-commercecheckoutsummaryitem">
+                  <label class="w-commerce-commercecheckoutsummarylabel">Billing Address</label>
+                  <div>Jane Doe</div>
+                  <div>123 Sample St</div>
+                  <div class="w-commerce-commercecheckoutsummaryflexboxdiv">
+                    <div class="w-commerce-commercecheckoutsummarytextspacingondiv">Sydney</div>
+                    <div class="w-commerce-commercecheckoutsummarytextspacingondiv">NSW</div>
+                    <div class="w-commerce-commercecheckoutsummarytextspacingondiv">2000</div>
+                  </div>
+                  <div>Australia</div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="w-commerce-commercecheckoutorderitemswrapper">
+          <div class="w-commerce-commercecheckoutsummaryblockheader">
+            <h2>Items in Order</h2>
+          </div>
+          <fieldset class="w-commerce-commercecheckoutblockcontent">
+            <div class="w-commerce-commercecheckoutorderitemslist" role="list">
+              <div class="w-commerce-commercecheckoutsummarylineitem" role="listitem">
+                <div>The Yoga Handbook (E-book) x1</div>
+                <div>$29.00</div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="w-commerce-commercelayoutsidebar">
+        <div class="w-commerce-commercecheckoutordersummarywrapper">
+          <div class="w-commerce-commercecheckoutsummaryblockheader">
+            <h2>Order Summary</h2>
+          </div>
+          <fieldset class="w-commerce-commercecheckoutblockcontent">
+            <div class="w-commerce-commercecheckoutsummarylineitem">
+              <div>Subtotal</div>
+              <div>$29.00</div>
+            </div>
+            <div class="w-commerce-commercecheckoutsummarylineitem">
+              <div>Total</div>
+              <div class="w-commerce-commercecheckoutsummarytotal">$29.00</div>
+            </div>
+          </fieldset>
+        </div>
+        <a href="/order-confirmation" data-node-type="commerce-checkout-place-order-button" class="w-commerce-commercecheckoutplaceorderbutton">Place Order</a>
+      </div>
+    </div>
+  </div>
+</Layout>

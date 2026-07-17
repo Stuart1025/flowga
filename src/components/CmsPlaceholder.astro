@@ -1,0 +1,17 @@
+---
+interface Props {
+  label: string;
+  slug: string;
+}
+const { label, slug } = Astro.props;
+---
+
+<div class="utility_component">
+  <div class="utility_form-block w-form">
+    <h3>{label}</h3>
+    <div class="padding-xxsmall"></div>
+    <div>This CMS template had no content exported from Webflow. Route: <code>{slug}</code>. Connect a CMS or the Webflow API to populate it.</div>
+    <div class="padding-xxsmall"></div>
+    <a href="/" class="button w-button">Go Home</a>
+  </div>
+</div>

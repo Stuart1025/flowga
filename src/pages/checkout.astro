@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { countries } from '../data/countries';
+---
+
+<Layout title="Checkout">
+  <div class="w-commerce-commercecheckoutformcontainer check-form-wrapper" data-checkout-form>
+    <div class="w-commerce-commercelayoutcontainer w-container">
+      <div class="w-commerce-commercelayoutmain">
+        <form data-node-type="commerce-checkout-customer-info-wrapper" class="w-commerce-commercecheckoutcustomerinfowrapper">
+          <div class="w-commerce-commercecheckoutblockheader">
+            <h2>Customer Info</h2>
+            <div>* Required</div>
+          </div>
+          <fieldset class="w-commerce-commercecheckoutblockcontent">
+            <label for="wf-ecom-email" class="w-commerce-commercecheckoutlabel">Email *</label>
+            <input id="wf-ecom-email" class="w-commerce-commercecheckoutemailinput" type="email" name="email" required />
+          </fieldset>
+        </form>
+
+        <form data-node-type="commerce-checkout-shipping-address-wrapper" class="w-commerce-commercecheckoutshippingaddresswrapper">
+          <div class="w-commerce-commercecheckoutblockheader">
+            <h2>Shipping Address</h2>
+            <div>* Required</div>
+          </div>
+          <fieldset class="w-commerce-commercecheckoutblockcontent">
+            <label for="wf-ecom-shipping-name" class="w-commerce-commercecheckoutlabel">Full Name *</label>
+            <input id="wf-ecom-shipping-name" class="w-commerce-commercecheckoutshippingfullname" name="name" type="text" required />
+            <label for="wf-ecom-shipping-address" class="w-commerce-commercecheckoutlabel">Street Address *</label>
+            <input id="wf-ecom-shipping-address" class="w-commerce-commercecheckoutshippingstreetaddress" name="address_line1" type="text" required />
+            <input aria-label="Shipping address optional" class="w-commerce-commercecheckoutshippingstreetaddressoptional" name="address_line2" type="text" placeholder="Apartment, suite, etc. (optional)" />
+            <div class="w-commerce-commercecheckoutrow">
+              <div class="w-commerce-commercecheckoutcolumn">
+                <label for="wf-ecom-shipping-city" class="w-commerce-commercecheckoutlabel">City *</label>
+                <input id="wf-ecom-shipping-city" class="w-commerce-commercecheckoutshippingcity" name="address_city" type="text" required />
+              </div>
+              <div class="w-commerce-commercecheckoutcolumn">
+                <label for="wf-ecom-shipping-state" class="w-commerce-commercecheckoutlabel">State/Province</label>
+                <input id="wf-ecom-shipping-state" class="w-commerce-commercecheckoutshippingstateprovince" name="address_state" type="text" />
+              </div>
+              <div class="w-commerce-commercecheckoutcolumn">
+                <label for="wf-ecom-shipping-zip" class="w-commerce-commercecheckoutlabel">Zip/Postal Code *</label>
+                <input id="wf-ecom-shipping-zip" class="w-commerce-commercecheckoutshippingzippostalcode" name="address_zip" type="text" required />
+              </div>
+            </div>
+            <label for="wf-ecom-shipping-country" class="w-commerce-commercecheckoutlabel">Country *</label>
+            <select id="wf-ecom-shipping-country" class="w-commerce-commercecheckoutshippingcountryselector" name="address_country">
+              {countries.map((c) => (
+                <option value={c.code} selected={c.code === 'US'}>{c.name}</option>
+              ))}
+            </select>
+          </fieldset>
+        </form>
+
+        <div class="w-commerce-commercecheckoutpaymentinfowrapper">
+          <div class="w-commerce-commercecheckoutblockheader">
+            <h2>Payment Info</h2>
+            <div>* Required</div>
+          </div>
+          <fieldset class="w-commerce-commercecheckoutblockcontent">
+            <label for="card-number" class="w-commerce-commercecheckoutlabel">Card Number *</label>
+            <input id="card-number" class="w-commerce-commercecheckoutcardnumber" type="text" inputmode="numeric" placeholder="1234 1234 1234 1234" required />
+            <div class="w-commerce-commercecheckoutrow">
+              <div class="w-commerce-commercecheckoutcolumn">
+                <label for="card-expiry" class="w-commerce-commercecheckoutlabel">Expiration Date *</label>
+                <input id="card-expiry" class="w-commerce-commercecheckoutcardexpirationdate" type="text" placeholder="MM / YY" required />
+              </div>
+              <div class="w-commerce-commercecheckoutcolumn">
+                <label for="card-cvc" class="w-commerce-commercecheckoutlabel">Security Code *</label>
+                <input id="card-cvc" class="w-commerce-commercecheckoutcardsecuritycode" type="text" placeholder="CVC" required />
+              </div>
+            </div>
+            <div class="w-commerce-commercecheckoutbillingaddresstogglewrapper">
+              <input id="billing-address-toggle" data-billing-toggle class="w-commerce-commercecheckoutbillingaddresstogglecheckbox" type="checkbox" checked />
+              <label for="billing-address-toggle" class="w-commerce-commercecheckoutbillingaddresstogglelabel">Billing address same as shipping</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <form data-node-type="commerce-checkout-billing-address-wrapper" class="w-commerce-commercecheckoutbillingaddresswrapper" style="display:none" data-billing-form>
+          <div class="w-commerce-commercecheckoutblockheader">
+            <h2>Billing Address</h2>
+            <div>* Required</div>
+          </div>
+          <fieldset class="w-commerce-commercecheckoutblockcontent">
+            <label for="wf-ecom-billing-name" class="w-commerce-commercecheckoutlabel">Full Name *</label>
+            <input id="wf-ecom-billing-name" class="w-commerce-commercecheckoutbillingfullname" name="billing_name" type="text" />
+            <label for="wf-ecom-billing-address" class="w-commerce-commercecheckoutlabel">Street Address *</label>
+            <input id="wf-ecom-billing-address" class="w-commerce-commercecheckoutbillingstreetaddress" name="billing_address_line1" type="text" />
+            <input aria-label="Billing address optional" class="w-commerce-commercecheckoutbillingstreetaddressoptional" name="billing_address_line2" type="text" placeholder="Apartment, suite, etc. (optional)" />
+            <div class="w-commerce-commercecheckoutrow">
+              <div class="w-commerce-commercecheckoutcolumn">
+                <label for="wf-ecom-billing-city" class="w-commerce-commercecheckoutlabel">City *</label>
+                <input id="wf-ecom-billing-city" class="w-commerce-commercecheckoutbillingcity" name="billing_address_city" type="text" />
+              </div>
+              <div class="w-commerce-commercecheckoutcolumn">
+                <label for="wf-ecom-billing-state" class="w-commerce-commercecheckoutlabel">State/Province</label>
+                <input id="wf-ecom-billing-state" class="w-commerce-commercecheckoutbillingstateprovince" name="billing_address_state" type="text" />
+              </div>
+              <div class="w-commerce-commercecheckoutcolumn">
+                <label for="wf-ecom-billing-zip" class="w-commerce-commercecheckoutlabel">Zip/Postal Code *</label>
+                <input id="wf-ecom-billing-zip" class="w-commerce-commercecheckoutbillingzippostalcode" name="billing_address_zip" type="text" />
+              </div>
+            </div>
+            <label for="wf-ecom-billing-country" class="w-commerce-commercecheckoutlabel">Country *</label>
+            <select id="wf-ecom-billing-country" class="w-commerce-commercecheckoutbillingcountryselector" name="billing_address_country">
+              {countries.map((c) => (
+                <option value={c.code} selected={c.code === 'US'}>{c.name}</option>
+              ))}
+            </select>
+          </fieldset>
+        </form>
+
+        <div class="w-commerce-commercecheckoutorderitemswrapper">
+          <div class="w-commerce-commercecheckoutsummaryblockheader">
+            <h2>Items in Order</h2>
+          </div>
+          <fieldset class="w-commerce-commercecheckoutblockcontent">
+            <div class="w-commerce-commercecheckoutorderitemslist" role="list">
+              <div class="w-commerce-commercecheckoutsummarylineitem" role="listitem">
+                <div>The Yoga Handbook (E-book) x1</div>
+                <div>$29.00</div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="w-commerce-commercelayoutsidebar">
+        <div class="w-commerce-commercecheckoutordersummarywrapper">
+          <div class="w-commerce-commercecheckoutsummaryblockheader">
+            <h2>Order Summary</h2>
+          </div>
+          <fieldset class="w-commerce-commercecheckoutblockcontent">
+            <div class="w-commerce-commercecheckoutsummarylineitem">
+              <div>Subtotal</div>
+              <div>$29.00</div>
+            </div>
+            <div class="w-commerce-commercecheckoutsummarylineitem">
+              <div>Total</div>
+              <div class="w-commerce-commercecheckoutsummarytotal">$29.00</div>
+            </div>
+          </fieldset>
+        </div>
+        <a href="/order-confirmation" data-node-type="commerce-checkout-place-order-button" class="w-commerce-commercecheckoutplaceorderbutton button">Place Order</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const toggle = document.querySelector<HTMLInputElement>('[data-billing-toggle]');
+  const billingForm = document.querySelector<HTMLElement>('[data-billing-form]');
+  toggle?.addEventListener('change', () => {
+    if (billingForm) billingForm.style.display = toggle.checked ? 'none' : 'block';
+  });
+</script>

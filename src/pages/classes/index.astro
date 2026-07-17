@@ -1,0 +1,281 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { classes } from '../../data/classes';
+import { instructors } from '../../data/instructors';
+
+const tabs = [{ slug: 'all', name: 'All Classes' }, ...instructors.map((i) => ({ slug: i.slug, name: i.firstName }))];
+---
+
+<Layout title="Classes">
+  <Nav />
+
+  <header class="section_header33 classes-hero">
+    <div class="nav-spacer"></div>
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="header33_content">
+          <div class="padding-section-large">
+            <div class="text-align-center" data-reveal>
+              <div class="max-width-large align-center">
+                <div class="margin-bottom margin-small">
+                  <h1 class="heading-style-h1 text-color-white">Discover Our Unique Diverse Classes</h1>
+                </div>
+                <p class="text-size-medium text-color-white">Whether you're a beginner or an experienced yogi, our experienced instructors will guide you through a transformative practice that nurtures both body and mind.</p>
+                <div class="margin-top margin-medium">
+                  <div class="button-group is-center">
+                    <a href="#classes-grid" class="button w-button">Explore</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section_product10" id="classes-grid">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="product10_component">
+            <div class="margin-bottom margin-large">
+              <div class="text-align-center">
+                <div class="max-width-large align-center">
+                  <div class="margin-bottom margin-xsmall">
+                    <div class="text-style-tagline text-color-black">Discover</div>
+                  </div>
+                  <div class="margin-bottom margin-small">
+                    <h2 class="heading-style-h2 text-color-black">Classes</h2>
+                  </div>
+                  <p class="text-size-medium text-color-black">Join us for a variety of yoga classes led by experienced instructors.</p>
+                </div>
+              </div>
+            </div>
+            <div class="w-tabs" data-tabs role="tablist">
+              <div class="classes-tabs-wrapper w-tab-menu">
+                {tabs.map((tab, i) => (
+                  <button
+                    type="button"
+                    class={`class-tabs-button w-inline-block w-tab-link${i === 0 ? ' w--current' : ''}`}
+                    data-tab-link={tab.slug}
+                    role="tab"
+                    aria-selected={i === 0}
+                  >
+                    <div class="class-tabs-button-text">{tab.name}</div>
+                  </button>
+                ))}
+              </div>
+              <div class="w-tab-content">
+                {tabs.map((tab, i) => {
+                  const filtered = tab.slug === 'all' ? classes : classes.filter((c) => c.instructorSlug === tab.slug);
+                  return (
+                    <div data-tab-panel={tab.slug} class={`w-tab-pane${i === 0 ? ' w--tab-active' : ''}`} role="tabpanel" hidden={i !== 0}>
+                      <div class="w-dyn-list">
+                        <div role="list" class="classes-grid w-dyn-items">
+                          {filtered.map((yogaClass) => {
+                            const instructor = instructors.find((ins) => ins.slug === yogaClass.instructorSlug)!;
+                            return (
+                              <div role="listitem" class="w-dyn-item">
+                                <div class="class-card-wrapper" style={`background-image:linear-gradient(#00000080, #00000080), url(${yogaClass.image})`}>
+                                  <div class="class-card-gradient"></div>
+                                  <div class="class-card-top-text-wrapper">
+                                    <div class="text-size-medium text-weight-semibold text-color-white">{yogaClass.title}</div>
+                                    <div class="text-size-small text-color-white">{yogaClass.tags.join(' · ')}</div>
+                                  </div>
+                                  <a href={`/classes/${yogaClass.slug}`} class="class-card-overlay w-inline-block">
+                                    <div class="class-card-instructor">
+                                      <div class="text-size-medium text-weight-semibold text-color-white">With</div>
+                                      <div class="text-size-medium text-weight-semibold text-color-white">{instructor.firstName}</div>
+                                    </div>
+                                    <div class="class-card-date">
+                                      <div class="text-size-small text-color-white">{yogaClass.date}</div>
+                                      <div class="text-size-small text-color-white comma-fix-space">s,</div>
+                                      <div class="text-size-small text-color-white">{yogaClass.time}</div>
+                                    </div>
+                                    <div class="button is-secondary is-alternate">Learn More</div>
+                                  </a>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        {filtered.length === 0 && (
+                          <div class="w-dyn-empty">
+                            <div>No items found.</div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_team17">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="team17_component">
+            <div class="w-layout-grid team17_content">
+              <div class="team17_content-left" data-reveal>
+                <div class="margin-bottom margin-xsmall">
+                  <div class="text-style-tagline text-color-accent">Experienced</div>
+                </div>
+                <div class="margin-bottom margin-small">
+                  <h2 class="heading-style-h2">Our Instructors</h2>
+                </div>
+                <p class="text-size-medium">Discover the expertise of our top-notch instructors</p>
+              </div>
+              <div class="team17_list-wrapper" data-reveal>
+                <div class="w-dyn-list">
+                  <div role="list" class="w-dyn-items">
+                    {instructors.map((instructor) => (
+                      <div role="listitem" class="w-dyn-item">
+                        <div class="team17_item">
+                          <div class="team17_image-wrapper">
+                            <img loading="lazy" src={instructor.image} alt={instructor.alt} class="team17_image" />
+                          </div>
+                          <div class="team17_item-content">
+                            <div class="margin-bottom margin-xsmall">
+                              <div class="team17_title-wrapper">
+                                <div class="class-card-instructor">
+                                  <div class="text-size-large text-weight-semibold">{instructor.firstName}</div>
+                                  <div class="text-size-large text-weight-semibold">{instructor.lastName}</div>
+                                </div>
+                                <div class="text-size-medium">{instructor.role}</div>
+                              </div>
+                            </div>
+                            <p>{instructor.bio}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_layout12">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="layout12_component">
+            <div class="w-layout-grid layout12_content">
+              <div class="layout12_content-left" data-reveal>
+                <div class="margin-bottom margin-small">
+                  <h2>Why Consider choosing The Flowga Classes?</h2>
+                </div>
+                <div class="margin-bottom margin-medium">
+                  <p class="text-size-medium text-color-black">Our yoga classes offer a wide range of benefits for both the body and mind. From increased flexibility and strength to stress relief and improved focus, our experienced instructors will guide you through a transformative practice that will leave you feeling refreshed and rejuvenated.</p>
+                </div>
+                <a href="#classes-grid" class="button is-secondary w-button">See Classes</a>
+              </div>
+              <div class="layout12_image-wrapper" data-reveal>
+                <img
+                  sizes="100vw"
+                  srcset="/images/Classes-About-p-500.jpg 500w, /images/Classes-About-p-800.jpg 800w, /images/Classes-About-p-1080.jpg 1080w, /images/Classes-About.jpg 1456w"
+                  alt=""
+                  src="/images/Classes-About.jpg"
+                  loading="lazy"
+                  class="layout12_image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_cta29 text-color-white background-color-accent section-dark-wave">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="cta29_component">
+            <div class="text-align-center" data-reveal>
+              <div class="max-width-large align-center">
+                <div class="margin-bottom margin-small">
+                  <h2 class="heading-style-h2 text-color-white">Elevate Your Practice</h2>
+                </div>
+                <p class="text-size-medium text-color-white">Discover our premium classes!</p>
+                <div class="margin-top margin-medium">
+                  <div class="button-group is-center">
+                    <a href="#classes-grid" class="button is-alternate w-button">Explore</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tabs]').forEach((tabs) => {
+    const links = tabs.querySelectorAll<HTMLButtonElement>('[data-tab-link]');
+    const panels = tabs.querySelectorAll<HTMLElement>('[data-tab-panel]');
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        const target = link.dataset.tabLink;
+        links.forEach((l) => {
+          const active = l === link;
+          l.classList.toggle('w--current', active);
+          l.setAttribute('aria-selected', String(active));
+        });
+        panels.forEach((p) => {
+          const active = p.dataset.tabPanel === target;
+          p.classList.toggle('w--tab-active', active);
+          p.hidden = !active;
+        });
+      });
+    });
+  });
+
+  // Scroll-triggered reveal (replaces IX2 fade/slide-up)
+  const revealEls = document.querySelectorAll<HTMLElement>('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-revealed'));
+  }
+</script>
+
+<style>
+  [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  [data-reveal].is-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+</style>

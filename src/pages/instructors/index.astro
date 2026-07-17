@@ -1,0 +1,371 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { instructors } from '../../data/instructors';
+---
+
+<Layout title="Instructors">
+  <Nav />
+
+  <header class="section_header80 background-color-grey">
+    <div class="padding-global">
+      <div class="header80_component">
+        <div class="header80_content-wrapper">
+          <div class="header80_images-wrapper">
+            <div class="header80_image-list">
+              <div class="header80_image-wrapper is-image-1">
+                <img loading="lazy" alt="Karen Miller profile picture" src="/images/Instructor-Hero-1_1.avif" class="header80_image" />
+              </div>
+              <div class="header80_image-wrapper is-image-2">
+                <img loading="lazy" alt="Instructor with blond hair" src="/images/Instructor-Hero-2_1.avif" class="header80_image" />
+              </div>
+              <div class="header80_image-wrapper is-image-3">
+                <img loading="lazy" alt="Rona profile picture" src="/images/Instructor-Hero-5_1.avif" class="header80_image" />
+              </div>
+              <div class="header80_image-wrapper is-image-4">
+                <img loading="lazy" alt="Jasmine profile picture" src="/images/Instructor-Hero-4_1.avif" class="header80_image" />
+              </div>
+            </div>
+          </div>
+          <div class="header80_images-wrapper images-wrapper-right">
+            <div class="header80_image-list image-list-right">
+              <div class="header80_image-wrapper is-image-5">
+                <img
+                  sizes="(max-width: 799px) 100vw, 799px"
+                  alt="Man with long hair and facial hair"
+                  src="/images/Instructor-Hero-3_1.avif"
+                  loading="lazy"
+                  srcset="/images/Instructor-Hero-3_1Instructor-Hero-3.avif 500w, /images/Instructor-Hero-3_1.avif 799w"
+                  class="header80_image"
+                />
+              </div>
+              <div class="header80_image-wrapper is-image-6">
+                <img
+                  sizes="(max-width: 814px) 100vw, 814px"
+                  alt="Danny profile picture"
+                  src="/images/Instructor-Hero-6_1.avif"
+                  loading="lazy"
+                  srcset="/images/Instructor-Hero-6_1Instructor-Hero-6.avif 500w, /images/Instructor-Hero-6_1.avif 814w"
+                  class="header80_image"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="header80_content">
+            <div class="text-align-center" data-reveal>
+              <div class="margin-bottom margin-small">
+                <h1 class="heading-style-h1">Meet Our Expert Instructors</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section_team12">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="team12_component">
+            <div class="margin-bottom margin-xxlarge">
+              <div class="text-align-center" data-reveal>
+                <div class="max-width-large align-center">
+                  <div class="margin-bottom margin-xsmall">
+                    <div class="text-style-tagline text-color-accent">Experienced</div>
+                  </div>
+                  <div class="margin-bottom margin-small">
+                    <h2 class="heading-style-h2">Our Instructors</h2>
+                  </div>
+                  <p class="text-size-medium">Meet our talented team of yoga instructors</p>
+                </div>
+              </div>
+            </div>
+            <div class="w-dyn-list">
+              <div role="list" class="team12_list w-dyn-items">
+                {instructors.map((instructor) => (
+                  <div role="listitem" class="w-dyn-item">
+                    <a href={`/instructors/${instructor.slug}`} class="team12_item">
+                      <div class="margin-bottom margin-small">
+                        <div class="team12_image-wrapper">
+                          <img loading="lazy" src={instructor.image} alt={instructor.alt} class="team12_image" />
+                        </div>
+                      </div>
+                      <div class="margin-bottom margin-xsmall">
+                        <div class="team12_title-wrapper">
+                          <div class="class-card-instructor center-flex">
+                            <div class="text-size-large text-weight-semibold">{instructor.firstName}</div>
+                            <div class="text-size-large text-weight-semibold">{instructor.lastName}</div>
+                          </div>
+                          <div class="text-size-medium">{instructor.role}</div>
+                        </div>
+                      </div>
+                      <p class="text-rich-text">{instructor.bio}</p>
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_layout71">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="layout71_component">
+            <div class="w-layout-grid layout71_content">
+              <div class="layout71_content-left" data-reveal>
+                <div class="margin-bottom margin-xsmall">
+                  <div class="text-style-tagline">Yoga</div>
+                </div>
+                <h2 class="heading-style-h2">Meet Our Talented Yoga Instructors</h2>
+              </div>
+              <div class="layout71_content-right" data-reveal>
+                <div class="margin-bottom margin-small">
+                  <p class="text-size-medium">Our instructors are highly trained and passionate about yoga. They bring a unique blend of teaching styles and expertise to our studio, ensuring that every class is a transformative experience. Whether you're a beginner or an advanced yogi, you'll find the perfect instructor to guide you on your yoga journey.</p>
+                </div>
+                <ul role="list" class="layout71_list">
+                  <li class="layout71_item">
+                    <p>Expertise in Various Yoga Styles</p>
+                  </li>
+                  <li class="layout71_item">
+                    <p>Personalized Instruction for Every Student</p>
+                  </li>
+                  <li class="layout71_item">
+                    <p>Small Class Sizes for Individual Attention</p>
+                  </li>
+                </ul>
+                <div class="margin-top margin-medium">
+                  <div class="button-group">
+                    <a href="/classes" class="button is-secondary w-button">View Classes</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_testimonial7 background-color-grey">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="margin-bottom margin-huge text-align-center">
+            <h2>What customers say</h2>
+            <div class="text-block">Flowga has help change many lives</div>
+          </div>
+          <div class="testimonial7_component">
+            <div class="testimonial7_slider w-slider" data-slider>
+              <div class="testimonial7_mask w-slider-mask" data-slider-mask>
+                <div class="testimonial7_slide w-slide" data-slide>
+                  <div class="testimonial7_content">
+                    <h3 class="heading-style-h5 text-color-black">"I never knew how much yoga could help me until I started coming to Flowga. The instructors are amazing and have taught me so much. I'm so grateful!"</h3>
+                    <div class="margin-top margin-medium">
+                      <div class="testimonial7_client">
+                        <div class="margin-bottom margin-xsmall">
+                          <div class="testimonial7_client-image-wrapper">
+                            <img loading="lazy" src="/images/Home-testemonial.png" alt="" class="testimonial7_client-image" />
+                          </div>
+                        </div>
+                        <div class="text-weight-semibold text-color-black">Johnny Dorand</div>
+                        <div class="text-color-black">Yoga Enthusiast</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial7_slide w-slide" data-slide>
+                  <div class="testimonial7_content">
+                    <h3 class="heading-style-h5 text-color-black">"I never knew how much yoga could help me until I started coming to Flowga. The instructors are amazing and have taught me so much. I'm so grateful!"</h3>
+                    <div class="margin-top margin-medium">
+                      <div class="testimonial7_client">
+                        <div class="margin-bottom margin-xsmall">
+                          <div class="testimonial7_client-image-wrapper">
+                            <img loading="lazy" src="/images/Home-testemonial-3.png" alt="" class="testimonial7_client-image" />
+                          </div>
+                        </div>
+                        <div class="text-weight-semibold text-color-black">Johnny Dorand</div>
+                        <div class="text-color-black">Yoga Enthusiast</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial7_slide w-slide" data-slide>
+                  <div class="testimonial7_content">
+                    <h3 class="heading-style-h5 text-color-black">"I never knew how much yoga could help me until I started coming to Flowga. The instructors are amazing and have taught me so much. I'm so grateful!"</h3>
+                    <div class="margin-top margin-medium">
+                      <div class="testimonial7_client">
+                        <div class="margin-bottom margin-xsmall">
+                          <div class="testimonial7_client-image-wrapper">
+                            <img loading="lazy" src="/images/Home-testemonial-2.png" alt="" class="testimonial7_client-image" />
+                          </div>
+                        </div>
+                        <div class="text-weight-semibold text-color-black">Johnny Dorand</div>
+                        <div class="text-color-black">Yoga Enthusiast</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="slider-arrow is-centre-previous hide-mobile-landscape w-slider-arrow-left" data-slider-prev aria-label="Previous testimonial">
+                <div class="slider-arrow-icon_default">
+                  <svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.31066 8.75001L9.03033 14.4697L7.96967 15.5303L0.439339 8.00001L7.96967 0.469676L9.03033 1.53034L3.31066 7.25001L15.5 7.25L15.5 8.75L3.31066 8.75001Z" fill="currentColor"></path>
+                  </svg>
+                </div>
+              </button>
+              <button type="button" class="slider-arrow is-centre-next hide-mobile-landscape w-slider-arrow-right" data-slider-next aria-label="Next testimonial">
+                <div class="slider-arrow-icon_default">
+                  <svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.6893 7.25L6.96967 1.53033L8.03033 0.469666L15.5607 8L8.03033 15.5303L6.96967 14.4697L12.6893 8.75H0.5V7.25H12.6893Z" fill="currentColor"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="testimonial7_slide-nav w-slider-nav w-slider-nav-invert w-round" data-slider-nav></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_cta29 text-color-white background-color-accent section-dark-wave">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="cta29_component">
+            <div class="text-align-center" data-reveal>
+              <div class="max-width-large align-center">
+                <div class="margin-bottom margin-small">
+                  <h2 class="heading-style-h2 text-color-white">Elevate Your Practice</h2>
+                </div>
+                <p class="text-size-medium text-color-white">Discover our premium classes!</p>
+                <div class="margin-top margin-medium">
+                  <div class="button-group is-center">
+                    <a href="/classes" class="button is-alternate w-button">Explore</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-slider]').forEach((slider) => {
+    const mask = slider.querySelector<HTMLElement>('[data-slider-mask]');
+    const slides = Array.from(slider.querySelectorAll<HTMLElement>('[data-slide]'));
+    const nav = slider.querySelector<HTMLElement>('[data-slider-nav]');
+    const prev = slider.querySelector<HTMLButtonElement>('[data-slider-prev]');
+    const next = slider.querySelector<HTMLButtonElement>('[data-slider-next]');
+    if (!mask || slides.length === 0) return;
+
+    let index = 0;
+    const dots: HTMLButtonElement[] = [];
+
+    slides.forEach((slide, i) => {
+      slide.style.display = i === 0 ? '' : 'none';
+      if (nav) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'w-slider-dot' + (i === 0 ? ' w-active' : '');
+        dot.setAttribute('aria-label', `Show testimonial ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        nav.appendChild(dot);
+        dots.push(dot);
+      }
+    });
+
+    function goTo(i: number) {
+      index = (i + slides.length) % slides.length;
+      slides.forEach((slide, j) => {
+        slide.style.display = j === index ? '' : 'none';
+      });
+      dots.forEach((dot, j) => dot.classList.toggle('w-active', j === index));
+    }
+
+    prev?.addEventListener('click', () => goTo(index - 1));
+    next?.addEventListener('click', () => goTo(index + 1));
+  });
+
+  // Scroll-triggered reveal (replaces IX2 fade/slide-up)
+  const revealEls = document.querySelectorAll<HTMLElement>('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-revealed'));
+  }
+
+  // header80: .header80_content-wrapper is sticky-pinned for .header80_component's 300vh.
+  // Slide each .header80_image-list up in proportion to scroll progress through that
+  // section, so the mosaic images scroll up as the page scrolls down.
+  const header80 = document.querySelector<HTMLElement>('.header80_component');
+  const imageLists = Array.from(document.querySelectorAll<HTMLElement>('.header80_image-list'));
+  if (header80 && imageLists.length) {
+    let ticking = false;
+    const updateHeaderScroll = () => {
+      const rect = header80.getBoundingClientRect();
+      const total = header80.offsetHeight - window.innerHeight;
+      const progress = total > 0 ? Math.min(Math.max(-rect.top / total, 0), 1) : 0;
+      imageLists.forEach((list) => {
+        const distance = Math.max(list.scrollHeight - window.innerHeight, 0);
+        list.style.transform = `translate3d(0, ${-progress * distance}px, 0)`;
+      });
+      ticking = false;
+    };
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(updateHeaderScroll);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+    window.addEventListener('resize', updateHeaderScroll);
+    updateHeaderScroll();
+  }
+</script>
+
+<style>
+  [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  [data-reveal].is-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* .header80_content-wrapper is already position:sticky/height:100vh in the site CSS,
+     pinning this hero for the full 300vh of .header80_component. The scroll-up motion
+     itself was IX2-driven and isn't ported -- rebuild it by translating each
+     .header80_image-list upward in proportion to scroll progress through the section. */
+  .header80_image-list {
+    will-change: transform;
+  }
+</style>

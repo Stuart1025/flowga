@@ -1,0 +1,255 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'Yoga Studio' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <link href="/css/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="/css/webflow.css" rel="stylesheet" type="text/css" />
+    <link href="/css/myflowgayoga.webflow.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="/images/webclip.png" rel="apple-touch-icon" />
+    <style>
+      * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+    <style is:global>
+      /* Ported from Webflow's per-page style-overrides + color-schemes embeds (not present in the exported site CSS) */
+      a,
+      .w-input,
+      .w-select,
+      .w-tab-link,
+      .w-nav-link,
+      .w-nav-brand,
+      .w-dropdown-btn,
+      .w-dropdown-toggle,
+      .w-slider-arrow-left,
+      .w-slider-arrow-right,
+      .w-dropdown-link {
+        color: inherit;
+        text-decoration: inherit;
+        font-size: inherit;
+      }
+      *[tabindex]:focus-visible,
+      input[type='file']:focus-visible {
+        outline: 0.125rem solid #4d65ff;
+        outline-offset: 0.125rem;
+      }
+      .w-richtext > :not(div):first-child,
+      .w-richtext > div:first-child > :first-child {
+        margin-top: 0 !important;
+      }
+      .w-richtext > :last-child,
+      .w-richtext ol li:last-child,
+      .w-richtext ul li:last-child {
+        margin-bottom: 0 !important;
+      }
+      .pointer-events-off {
+        pointer-events: none;
+      }
+      .pointer-events-on {
+        pointer-events: auto;
+      }
+      .div-square::after {
+        content: '';
+        display: block;
+        padding-bottom: 100%;
+      }
+      .container-medium,
+      .container-small,
+      .container-large {
+        margin-right: auto !important;
+        margin-left: auto !important;
+      }
+      .text-style-3lines {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+      .text-style-2lines {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .display-inlineflex {
+        display: inline-flex;
+      }
+      .hide {
+        display: none !important;
+      }
+      select {
+        -webkit-appearance: none;
+      }
+      @media screen and (max-width: 991px) {
+        .hide,
+        .hide-tablet {
+          display: none !important;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        .hide-mobile-landscape {
+          display: none !important;
+        }
+      }
+      @media screen and (max-width: 479px) {
+        .hide-mobile {
+          display: none !important;
+        }
+      }
+      .margin-0 {
+        margin: 0rem !important;
+      }
+      .padding-0 {
+        padding: 0rem !important;
+      }
+      .spacing-clean {
+        padding: 0rem !important;
+        margin: 0rem !important;
+      }
+      .margin-top {
+        margin-right: 0rem !important;
+        margin-bottom: 0rem !important;
+        margin-left: 0rem !important;
+      }
+      .padding-top {
+        padding-right: 0rem !important;
+        padding-bottom: 0rem !important;
+        padding-left: 0rem !important;
+      }
+      .margin-right {
+        margin-top: 0rem !important;
+        margin-bottom: 0rem !important;
+        margin-left: 0rem !important;
+      }
+      .padding-right {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+        padding-left: 0rem !important;
+      }
+      .margin-bottom {
+        margin-top: 0rem !important;
+        margin-right: 0rem !important;
+        margin-left: 0rem !important;
+      }
+      .padding-bottom {
+        padding-top: 0rem !important;
+        padding-right: 0rem !important;
+        padding-left: 0rem !important;
+      }
+      .margin-left {
+        margin-top: 0rem !important;
+        margin-right: 0rem !important;
+        margin-bottom: 0rem !important;
+      }
+      .padding-left {
+        padding-top: 0rem !important;
+        padding-right: 0rem !important;
+        padding-bottom: 0rem !important;
+      }
+      .margin-horizontal {
+        margin-top: 0rem !important;
+        margin-bottom: 0rem !important;
+      }
+      .padding-horizontal {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+      }
+      .margin-vertical {
+        margin-right: 0rem !important;
+        margin-left: 0rem !important;
+      }
+      .padding-vertical {
+        padding-right: 0rem !important;
+        padding-left: 0rem !important;
+      }
+      .truncate-width {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        overflow: -moz-scrollbars-none;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .color-scheme-2 {
+        --color-scheme-1--text: var(--color-scheme-2--text);
+        --color-scheme-1--background: var(--color-scheme-2--background);
+        --color-scheme-1--foreground: var(--color-scheme-2--foreground);
+        --color-scheme-1--border: var(--color-scheme-2--border);
+        --color-scheme-1--accent: var(--color-scheme-2--accent);
+      }
+      .w-slider-dot {
+        background-color: var(--color-scheme-1--text);
+        opacity: 0.2;
+      }
+      .w-slider-dot.w-active {
+        background-color: var(--color-scheme-1--text);
+        opacity: 1;
+      }
+      .w-slider-nav-invert .w-slider-dot {
+        background-color: var(--color-scheme-1--text) !important;
+        opacity: 0.2 !important;
+      }
+      .w-slider-nav-invert .w-slider-dot.w-active {
+        background-color: var(--color-scheme-1--text) !important;
+        opacity: 1 !important;
+      }
+      /* Ported from the per-page "styles" w-embed -- drives the custom cursor's hover reveal */
+      body:hover .cursor-wrapper {
+        opacity: 1;
+      }
+      .cursor-wrapper {
+        pointer-events: none;
+      }
+      /* the site CSS flex-centers .cursor inside its 100vw/100vh wrapper -- take it out
+         of that flow so the JS-driven transform tracks the mouse directly */
+      .cursor-wrapper .cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        will-change: transform;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor-wrapper" data-cursor-wrapper>
+      <div class="cursor"></div>
+    </div>
+    <div class="page-wrapper">
+      <main class="main-wrapper">
+        <slot />
+      </main>
+    </div>
+    <script>
+      const cursorWrapper = document.querySelector<HTMLElement>('[data-cursor-wrapper]');
+      const cursor = cursorWrapper?.querySelector<HTMLElement>('.cursor');
+      if (cursorWrapper && cursor) {
+        window.addEventListener('mousemove', (event) => {
+          cursor.style.transform = `translate3d(${event.clientX - 10}px, ${event.clientY - 10}px, 0)`;
+        });
+      }
+    </script>
+  </body>
+</html>

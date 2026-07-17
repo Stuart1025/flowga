@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CmsPlaceholder from '../../components/CmsPlaceholder.astro';
+
+export function getStaticPaths() {
+  return [{ params: { slug: 'example' } }];
+}
+
+const { slug } = Astro.params;
+---
+
+<Layout title="Class Tag">
+  <CmsPlaceholder label="Class Tag" slug={`/classed-tags/${slug}`} />
+</Layout>

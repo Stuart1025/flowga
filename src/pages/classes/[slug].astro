@@ -1,0 +1,165 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { classes } from '../../data/classes';
+import { instructors } from '../../data/instructors';
+
+export function getStaticPaths() {
+  return classes.map((yogaClass) => ({
+    params: { slug: yogaClass.slug },
+    props: { yogaClass },
+  }));
+}
+
+const { yogaClass } = Astro.props;
+const instructor = instructors.find((i) => i.slug === yogaClass.instructorSlug)!;
+---
+
+<Layout title={yogaClass.title}>
+  <Nav />
+
+  <header class="section_portfolio-header6">
+    <div class="portfolio-header6_component">
+      <div class="portfolio-header6_image-wrapper">
+        <img loading="lazy" src={yogaClass.image} alt="" class="portfolio-header6_image" />
+        <img src="/images/Grey-wave.svg" loading="lazy" alt="" class="grey-wave" />
+      </div>
+      <div class="padding-global background-color-grey">
+        <div class="container-large">
+          <div class="padding-section-medium">
+            <div class="w-layout-grid portfolio-header6_content-wrapper">
+              <div class="portfolio-header6_content-left">
+                <div class="margin-bottom margin-small">
+                  <h1 class="heading-style-h1">{yogaClass.title}</h1>
+                </div>
+                <div class="text-size-medium">{yogaClass.description}</div>
+                <div class="w-dyn-list">
+                  <div role="list" class="portfolio-header6_tag-list w-dyn-items">
+                    {yogaClass.tags.map((tag) => (
+                      <div role="listitem" class="w-dyn-item">
+                        <div class="class-tag">{tag}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div class="w-layout-grid portfolio-header6_metatag-list">
+                <div class="portfolio-header6_metatag-item">
+                  <div class="margin-bottom margin-xxsmall">
+                    <h3 class="heading-style-h6">Where</h3>
+                  </div>
+                  <div>{yogaClass.location}</div>
+                </div>
+                <div class="portfolio-header6_metatag-item">
+                  <div class="margin-bottom margin-xxsmall">
+                    <h3 class="heading-style-h6">Date</h3>
+                  </div>
+                  <div>{yogaClass.date}</div>
+                </div>
+                <div class="portfolio-header6_metatag-item">
+                  <div class="margin-bottom margin-xxsmall">
+                    <h3 class="heading-style-h6">Instructor</h3>
+                  </div>
+                  <div class="class-card-instructor">
+                    <div>{instructor.firstName}</div>
+                    <div>{instructor.lastName}</div>
+                  </div>
+                </div>
+                <div class="portfolio-header6_metatag-item">
+                  <div class="margin-bottom margin-xxsmall">
+                    <h3 class="heading-style-h6">Time</h3>
+                  </div>
+                  <div>{yogaClass.time}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section_content2">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="content2_component">
+            <div class="w-layout-grid content2_content">
+              <div class="content2_content-left">
+                <div class="layout12_image-wrapper">
+                  <img loading="lazy" src={yogaClass.image} alt={yogaClass.title} class="layout12_image" />
+                </div>
+              </div>
+              <div class="content2_content-right">
+                <div class="margin-bottom margin-small">
+                  <h2 class="heading-style-h2">About This Class</h2>
+                </div>
+                <div class="text-rich-text w-richtext">
+                  <p>{yogaClass.description} Suitable for {yogaClass.tags.join(' and ')} practitioners, this class runs weekly at our {yogaClass.location}.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_content2">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="content2_component">
+            <div class="w-layout-grid content2_content">
+              <div class="content2_content-left">
+                <div class="layout12_image-wrapper">
+                  <img loading="lazy" src={instructor.image} alt={instructor.alt} class="layout12_image" />
+                </div>
+              </div>
+              <div class="content2_content-right">
+                <div class="margin-bottom margin-small">
+                  <h2 class="heading-style-h2">Your Instructor</h2>
+                </div>
+                <div class="text-rich-text w-richtext">
+                  <p>{instructor.bio}</p>
+                </div>
+                <ul role="list">
+                  <li>Increase Vitality</li>
+                  <li>Reduce Tension and Stress</li>
+                  <li>Promote Balance</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_cta57">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="cta57_component">
+            <div class="text-align-center">
+              <div class="max-width-large align-center">
+                <div class="cta57_heading-top">
+                  <h2>Book your class today</h2>
+                </div>
+                <p class="text-size-medium">Don't miss your opportunity to improve your life today</p>
+                <div class="margin-top margin-medium">
+                  <div class="button-group is-center">
+                    <a href="/checkout" class="button w-button">Book Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
