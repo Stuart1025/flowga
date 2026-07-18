@@ -368,8 +368,8 @@ import Footer from '../components/Footer.astro';
     transform: translate3d(0, 0, 0);
   }
 
-  /* .wave-long-pattern is a 6400px-wide repeating tile inside an overflow:hidden
-     wrapper -- scroll its background to get the continuous wave motion. */
+  /* .wave-long-pattern tiles the wave SVG at 50% width (two full humps always
+     fit edge-to-edge, at any viewport) and scrolls one tile-width per loop. */
   .wave-long-pattern {
     animation: wave-scroll 30s linear infinite;
   }
@@ -378,7 +378,7 @@ import Footer from '../components/Footer.astro';
       background-position-x: 0;
     }
     to {
-      background-position-x: -1600px;
+      background-position-x: -100%;
     }
   }
 

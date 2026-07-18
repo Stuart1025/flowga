@@ -7,6 +7,7 @@ const { variant = 'light' } = Astro.props;
 
 <div
   class="navbar11_component w-nav"
+  data-collapse="medium"
   data-nav-root
   role="banner"
 >
@@ -59,17 +60,23 @@ const { variant = 'light' } = Astro.props;
     const toggle = root.querySelector<HTMLButtonElement>('[data-nav-toggle]');
     const menu = root.querySelector<HTMLElement>('[data-nav-menu]');
     if (!toggle || !menu) return;
+
+    function setOpen(isOpen: boolean) {
+      root.classList.toggle('w--open', isOpen);
+      toggle!.classList.toggle('w--open', isOpen);
+      toggle!.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) {
+        menu!.setAttribute('data-nav-menu-open', '');
+      } else {
+        menu!.removeAttribute('data-nav-menu-open');
+      }
+    }
+
     toggle.addEventListener('click', () => {
-      const isOpen = root.classList.toggle('w--open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
-      menu.classList.toggle('w--open', isOpen);
+      setOpen(!menu.hasAttribute('data-nav-menu-open'));
     });
     menu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        root.classList.remove('w--open');
-        menu.classList.remove('w--open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', () => setOpen(false));
     });
   }
   document.querySelectorAll<HTMLElement>('[data-nav-root]').forEach(initNav);
@@ -82,35 +89,5 @@ const { variant = 'light' } = Astro.props;
     background-color: transparent;
     border: none;
     appearance: none;
-  }
-
-  /* Webflow's w-nav collapse relies on webflow.js to hide/position .navbar11_menu at
-     mobile widths -- rebuilt here since that runtime is not ported. */
-  @media screen and (max-width: 991px) {
-    .navbar11_menu-button {
-      display: flex !important;
-    }
-    .navbar11_menu {
-      display: none !important;
-      position: absolute !important;
-      top: 100% !important;
-      left: 0 !important;
-      right: 0 !important;
-      z-index: 20 !important;
-      /* site CSS's 767px breakpoint sets padding-bottom: 6rem for a full-height
-         mobile overlay pattern we're not using -- neutralize it for this small dropdown */
-      padding-bottom: 1rem !important;
-    }
-    .navbar11_menu.w--open {
-      display: flex !important;
-      flex-direction: column !important;
-    }
-    .navbar11_menu-links {
-      display: flex !important;
-      flex-direction: column !important;
-    }
-    .navbar11_link {
-      display: block !important;
-    }
   }
 </style>
