@@ -90,4 +90,24 @@ const { variant = 'light' } = Astro.props;
     border: none;
     appearance: none;
   }
+
+  /* .navbar11_menu-links has no site CSS at all -- without this, .navbar11_link's
+     991px rule (padding: .75rem 0, i.e. zero horizontal padding) leaves the 3 links
+     with no gap between them, running together as one line in the mobile dropdown. */
+  @media screen and (max-width: 991px) {
+    .navbar11_menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  /* site CSS's 767px breakpoint sets padding-bottom: 6rem on the menu for a
+     full-height mobile takeover pattern -- we use a small anchored dropdown
+     instead, so that padding just leaves a big empty gap. Neutralize it. */
+  @media screen and (max-width: 767px) {
+    .navbar11_menu.is-page-height-tablet {
+      padding-bottom: 1rem;
+    }
+  }
 </style>
